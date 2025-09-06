@@ -16,6 +16,7 @@ from transformers import AutoProcessor, AutoModelForZeroShotObjectDetection
 from utils.track_utils import sample_points_from_masks
 from utils.video_utils import create_video_from_images
 import imageio.v3 as iio
+import sys
 
 """
 Hyperparam for Ground and Tracking
@@ -25,12 +26,12 @@ TEXT_PROMPT = "human."
 SOURCE_VIDEO_FRAME_DIR = "lerobot_frames"
 SAVE_TRACKING_RESULTS_DIR = "./tracking_results"
 PROMPT_TYPE_FOR_VIDEO = "box" # choose from ["point", "box", "mask"]
-LEROBOT_DATASET_NAME = "sriramsk/human_mug_0718/"
+LEROBOT_DATASET_NAME = sys.argv[1]
 VIDEO_PATH = f"/home/sriram/.cache/huggingface/lerobot/{LEROBOT_DATASET_NAME}/videos/chunk-000/"
 RGB_KEY = "observation.images.cam_azure_kinect.color"
 DEPTH_KEY = "observation.images.cam_azure_kinect.transformed_depth"
 OUTPUT_VIDEO_PATH = "lerobot_video.mp4"
-OUTPUT_MASK_DIR = f"/data/sriram/lerobot_extradata/{LEROBOT_DATASET_NAME}"
+OUTPUT_MASK_DIR = f"/data/sriram/lerobot_extradata/{LEROBOT_DATASET_NAME}/gsam2_masks"
 scale_factor = 0.25
 
 """
