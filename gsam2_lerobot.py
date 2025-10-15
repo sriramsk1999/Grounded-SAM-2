@@ -61,6 +61,8 @@ grounding_model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).
 
 video_names = sorted(glob(f"{VIDEO_PATH}/{RGB_KEY}/*mp4"))
 
+if os.path.exists(SOURCE_VIDEO_FRAME_DIR): shutil.rmtree(SOURCE_VIDEO_FRAME_DIR)
+
 for i, item_name in tqdm(enumerate(video_names), total=len(video_names)):
     if os.path.exists(f"{OUTPUT_MASK_DIR}/{os.path.basename(item_name)}_masks"): continue
 
